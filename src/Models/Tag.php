@@ -7,6 +7,9 @@ use LaraZeus\Chaos\Concerns\ChaosModel;
 use LaraZeus\Tartarus\Models\Concerns\ForCompany;
 use LaraZeus\Tartarus\TartarusPlugin;
 
+/**
+ * @property int $id
+ */
 class Tag extends \Spatie\Tags\Tag
 {
     use ChaosModel;
