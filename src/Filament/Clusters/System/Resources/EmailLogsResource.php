@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Mail;
 use LaraZeus\Chaos\Filament\ChaosResource;
 use LaraZeus\Tartarus\Filament\Clusters\System;
 use LaraZeus\Tartarus\Filament\Clusters\System\Resources\EmailLogsResource\Pages;
+use LaraZeus\Tartarus\TartarusPlugin;
 use RickDBCN\FilamentEmail\Mail\ResendMail;
 use RickDBCN\FilamentEmail\Models\Email;
 
@@ -28,6 +29,12 @@ class EmailLogsResource extends ChaosResource
     public static function getModel(): string
     {
         return config('filament-email.resource.model');
+    }
+
+    public static function canViewAny(): bool
+    {
+        return ! in_array(static::class, TartarusPlugin::get()->getDisabledResources())
+            && parent::canViewAny();
     }
 
     public static function form(Form $form): Form

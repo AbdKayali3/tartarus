@@ -33,6 +33,12 @@ class CompanyResource extends ChaosResource
         return TartarusPlugin::get()->getNavigationGroupLabel();
     }
 
+    public static function canViewAny(): bool
+    {
+        return ! in_array(static::class, TartarusPlugin::get()->getDisabledResources())
+            && parent::canViewAny();
+    }
+
     public static function form(Form $form): Form
     {
         return ChaosForms::make($form, [

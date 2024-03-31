@@ -16,6 +16,8 @@ trait Configuration
         'TagType' => \LaraZeus\Tartarus\Enums\TagTypes::class,
     ];
 
+    protected array $disableResources = [];
+
     public function navigationGroupLabel(Closure | string $label): static
     {
         $this->navigationGroupLabel = $label;
@@ -43,5 +45,17 @@ trait Configuration
     public static function getModel(string $model): string
     {
         return (new static())::get()->getTartarusModels()[$model];
+    }
+
+    public function disableResources(array $resources): static
+    {
+        $this->disableResources = $resources;
+
+        return $this;
+    }
+
+    public function getDisabledResources(): ?array
+    {
+        return $this->disableResources;
     }
 }

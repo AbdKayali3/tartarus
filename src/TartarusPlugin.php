@@ -23,9 +23,6 @@ final class TartarusPlugin implements Plugin
             ->discoverClusters(in: __DIR__ . '/Filament/Clusters', for: 'LaraZeus\\Tartarus\\Filament\\Clusters')
             ->pages([
                 Deleter::class,
-            ])
-            ->resources([
-                //
             ]);
     }
 

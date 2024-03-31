@@ -8,7 +8,6 @@ use Filament\Forms\Form;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
 use LaraZeus\Chaos\Filament\ChaosResource;
 use LaraZeus\Chaos\Forms\Components\MultiLang;
 use LaraZeus\Tartarus\Filament\Clusters\System;
@@ -25,6 +24,12 @@ class TagResource extends ChaosResource
     public static function getModel(): string
     {
         return config('tags.tag_model');
+    }
+
+    public static function canViewAny(): bool
+    {
+        return ! in_array(static::class, TartarusPlugin::get()->getDisabledResources())
+            && parent::canViewAny();
     }
 
     public static function form(Form $form): Form
