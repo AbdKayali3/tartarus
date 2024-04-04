@@ -3,13 +3,22 @@
 namespace LaraZeus\Tartarus;
 
 use Closure;
+use LaraZeus\Tartarus\Concerns\HasNavGroupLabel;
+use LaraZeus\Tartarus\Filament\Clusters\System\Resources\CompanyResource;
+use LaraZeus\Tartarus\Filament\Clusters\System\Resources\EmailLogsResource;
+use LaraZeus\Tartarus\Filament\Clusters\System\Resources\TagResource;
+use LaraZeus\Tartarus\Filament\Pages\Deleter;
 
 trait Configuration
 {
-    /**
-     * the resources navigation group
-     */
-    protected Closure | string $navigationGroupLabel = 'Tartarus';
+    use HasNavGroupLabel;
+
+    public Closure | array $defaultNavigationGroupLabel = [
+        Deleter::class => 'Tartarus',
+        CompanyResource::class => 'Tartarus',
+        EmailLogsResource::class => 'Tartarus',
+        TagResource::class => 'Tartarus',
+    ];
 
     protected array $tartarusModels = [
         'Company' => \LaraZeus\Tartarus\Models\Company::class,
@@ -17,18 +26,6 @@ trait Configuration
     ];
 
     protected array $disableResources = [];
-
-    public function navigationGroupLabel(Closure | string $label): static
-    {
-        $this->navigationGroupLabel = $label;
-
-        return $this;
-    }
-
-    public function getNavigationGroupLabel(): Closure | string
-    {
-        return $this->evaluate($this->navigationGroupLabel);
-    }
 
     public function tartarusModels(array $models): static
     {

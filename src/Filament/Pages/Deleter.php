@@ -16,19 +16,25 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use LaraZeus\Tartarus\Filament\Clusters\System;
 use LaraZeus\Tartarus\Models\SoftDelete;
+use LaraZeus\Tartarus\TartarusPlugin;
 
 class Deleter extends Page implements HasTable
 {
     use InteractsWithForms;
     use InteractsWithTable;
 
-    protected static ?string $cluster = System::class;
+    //protected static ?string $cluster = System::class;
 
     protected static ?int $navigationSort = 99;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'zeus-tartarus::pages.deleter';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return TartarusPlugin::get()->getLabel(__CLASS__);
+    }
 
     public static function langFile(): string
     {

@@ -16,7 +16,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Mail;
 use LaraZeus\Chaos\Filament\ChaosResource;
-use LaraZeus\Tartarus\Filament\Clusters\System;
 use LaraZeus\Tartarus\Filament\Clusters\System\Resources\EmailLogsResource\Pages;
 use LaraZeus\Tartarus\TartarusPlugin;
 use RickDBCN\FilamentEmail\Mail\ResendMail;
@@ -24,7 +23,10 @@ use RickDBCN\FilamentEmail\Models\Email;
 
 class EmailLogsResource extends ChaosResource
 {
-    protected static ?string $cluster = System::class;
+    public static function getNavigationGroup(): ?string
+    {
+        return TartarusPlugin::get()->getLabel(__CLASS__);
+    }
 
     public static function getModel(): string
     {
