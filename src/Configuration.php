@@ -13,7 +13,7 @@ trait Configuration
 {
     use HasNavGroupLabel;
 
-    public Closure|array $defaultNavigationGroupLabel = [
+    public Closure | array $defaultNavigationGroupLabel = [
         Deleter::class => 'Tartarus',
         CompanyResource::class => 'Tartarus',
         EmailLogsResource::class => 'Tartarus',

@@ -16,7 +16,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Mail;
 use LaraZeus\Chaos\Filament\ChaosResource;
-use LaraZeus\Tartarus\Filament\Clusters\System;
 use LaraZeus\Tartarus\Filament\Clusters\System\Resources\EmailLogsResource\Pages;
 use LaraZeus\Tartarus\TartarusPlugin;
 use RickDBCN\FilamentEmail\Mail\ResendMail;
