@@ -24,7 +24,10 @@ use RickDBCN\FilamentEmail\Models\Email;
 
 class EmailLogsResource extends ChaosResource
 {
-    protected static ?string $cluster = System::class;
+    public static function getNavigationGroup(): ?string
+    {
+        return TartarusPlugin::get()->getLabel(__CLASS__);
+    }
 
     public static function getModel(): string
     {

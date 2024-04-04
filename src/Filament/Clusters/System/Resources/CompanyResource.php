@@ -30,7 +30,7 @@ class CompanyResource extends ChaosResource
 
     public static function getNavigationGroup(): ?string
     {
-        return TartarusPlugin::get()->getNavigationGroupLabel();
+        return TartarusPlugin::get()->getLabel(__CLASS__);
     }
 
     public static function canViewAny(): bool
