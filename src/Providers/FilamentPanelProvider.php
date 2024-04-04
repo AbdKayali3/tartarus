@@ -50,8 +50,8 @@ class FilamentPanelProvider
             ])
 
             // misc
-            //->databaseNotifications()
-            //->databaseNotificationsPolling('30s')
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('30s')
 
             // lang switcher
             ->renderHook('panels::user-menu.profile.after', fn (): View => view('zeus-tartarus::hooks.user-menu-lang'))
@@ -106,9 +106,12 @@ class FilamentPanelProvider
         });
 
         Select::configureUsing(function (Select $field) {
-            $field
-                ->searchable()
-                ->preload();
+            /** @phpstan-ignore-next-line */
+            if (! $field instanceof \Guava\FilamentIconPicker\Forms\IconPicker) {
+                $field
+                    ->searchable()
+                    ->preload();
+            }
         });
     }
 
