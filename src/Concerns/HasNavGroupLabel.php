@@ -17,14 +17,16 @@ trait HasNavGroupLabel
 
     public function getNavigationGroupLabel(): Closure | array
     {
-        return $this->evaluate($this->navigationGroupLabel);
+        return $this->navigationGroupLabel;
     }
 
     public function getLabel(string $resource): Closure | string
     {
-        return array_merge(
-            (new static())::get()->defaultNavigationGroupLabel,
-            $this->getNavigationGroupLabel()
-        )[$resource];
+        return $this->evaluate(
+            array_merge(
+                (new static())::get()->defaultNavigationGroupLabel,
+                $this->getNavigationGroupLabel()
+            )[$resource]
+        );
     }
 }
