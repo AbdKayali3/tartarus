@@ -28,7 +28,7 @@ class SettingsForm
                         ->label(__('Primary Color'))
                         ->colors(
                             collect(FilamentColor::getColors())
-                                ->forget(['primary', 'secondary', 'warning','info','danger','success','slate', 'zinc', 'neutral', 'stone'])
+                                ->forget(['primary', 'secondary', 'warning', 'info', 'danger', 'success', 'slate', 'zinc', 'neutral', 'stone'])
                                 ->toArray()
                         ),
                 ]),
