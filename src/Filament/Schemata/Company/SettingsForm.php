@@ -25,9 +25,10 @@ class SettingsForm
                         ->label(__('Slug')),
 
                     PresetColorPicker::make('primary_color')
+                        ->label(__('Primary Color'))
                         ->colors(
                             collect(FilamentColor::getColors())
-                                ->forget(['secondary', 'slate', 'zinc', 'neutral', 'stone'])
+                                ->forget(['primary', 'secondary', 'warning','info','danger','success','slate', 'zinc', 'neutral', 'stone'])
                                 ->toArray()
                         ),
                 ]),
