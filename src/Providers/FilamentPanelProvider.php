@@ -74,7 +74,7 @@ class FilamentPanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                SetLang::class,
+                //SetLang::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
